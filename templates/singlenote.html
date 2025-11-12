@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}View Note{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+      <div class="card shadow-sm">
+        <div class="card-body p-4">
+          <h3 class="mb-3">{{ note.title }}</h3>
+          <p class="mb-4">{{ note.content }}</p>
+          <p class="text-muted small">Created at: {{ note.created_at }}</p>
+
+          <div class="d-flex justify-content-between mt-4">
+            <a class="btn btn-secondary" href="{{ url_for('viewall') }}">Back</a>
+            <a class="btn btn-warning" href="{{ url_for('updatenote', note_id=note.id) }}">Edit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

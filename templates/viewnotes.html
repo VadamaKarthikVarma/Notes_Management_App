@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}All Notes{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h3 class="mb-4 text-center">Your Notes</h3>
+
+  <!-- 🔍 Search Bar -->
+  <div class="search-header mb-4 text-center">
+    <form method="POST" action="{{ url_for('viewall') }}" class="d-flex justify-content-center">
+      <input type="text" name="search" placeholder="Search your notes..." value="{{ search_query }}"
+        class="form-control w-50 me-2" />
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+
+  <!-- 🗒️ Notes Grid -->
+  <div class="row">
+    {% if notes %}
+    {% for note in notes %}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ note.title }}</h5>
+          <p class="card-text text-truncate">{{ note.content }}</p>
+          <p class="mt-auto mb-1 text-muted small">{{ note.created_at }}</p>
+          <div class="mt-2">
+            <a class="btn btn-sm btn-primary" href="{{ url_for('viewnotes', note_id=note.id) }}">View</a>
+            <a class="btn btn-sm btn-warning" href="{{ url_for('updatenote', note_id=note.id) }}">Edit</a>
+
+            <!-- Delete uses POST for safety -->
+            <form action="{{ url_for('deletenote', note_id=note.id) }}" method="POST" class="d-inline">
+              <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Delete this note?')">
+                Delete
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    {# If the user performed a search but has other notes, show "No matches" #}
+    {% if search_performed and has_any_notes %}
+    <p class="text-center text-muted soft-grey">
+      No matching notes found for "<strong>{{ search_query }}</strong>".
+      <a href="{{ url_for('viewall') }}" class="ms-2">Clear search</a>
+    </p>
+
+    {# If user has no notes at all OR no search performed #}
+    {% else %}
+    <p class="text-center text-muted soft-grey">
+      No notes yet. <a href="{{ url_for('addnote') }}">Create your first note</a>.
+    </p>
+    {% endif %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">📞 Contact Page</h2>
+        <p class="text-muted soft-grey">Get in touch with the developer</p>
+    </div>
+
+    <!-- Developer Information -->
+    <div class="card shadow-sm p-4 mb-4">
+        <h4 class="text-primary mb-3">👨‍💻 Developer Details</h4>
+        <ul class="list-unstyled">
+            <li><strong>Name:</strong> Karthik Varma</li>
+            <li><strong>Role:</strong> Full Stack Web Developer</li>
+            <li><strong>Email:</strong> <a href="mailto:vedha0316.10@gmail.com">vedha0316.10@gmail.com</a></li>
+            <li><strong>LinkedIn:</strong>
+                <a href="https://www.linkedin.com/in/vadama-karthik-varma-027613282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                    target="_blank">
+                    linkedin.com/in/Vadama-Karthik-Varma
+                </a>
+            </li>
+            <li><strong>GitHub:</strong>
+                <a href="https://github.com/VadamaKarthikVarma" target="_blank">
+                    github.com/VadamaKarthikVarma
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="card shadow-sm p-4 mb-5">
+        <h4 class="text-success mb-3">💬 Send a Message</h4>
+        <form method="POST" action="{{ url_for('contact') }}">
+            <div class="mb-3">
+                <label class="form-label">Your Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Your Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Message</label>
+                <textarea class="form-control" name="message" rows="4" placeholder="Write your message here"
+                    required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

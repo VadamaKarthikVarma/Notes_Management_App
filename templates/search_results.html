@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h3 class="mb-4">🔍 Search Results for "<span class="text-primary">{{ query }}</span>"</h3>
+
+    {% if notes %}
+    <div class="mb-4">
+        <h4 class="text-success">📝 Matching Notes</h4>
+        <div class="list-group">
+            {% for note in notes %}
+            <a href="{{ url_for('viewnotes', note_id=note.id) }}" class="list-group-item list-group-item-action">
+                <h5 class="mb-1">{{ note.title }}</h5>
+                <p class="mb-1 small">{{ note.content[:100] }}...</p>
+                <small class="text-muted">Created: {{ note.created_at }}</small>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if students %}
+    <div class="mb-4">
+        <h4 class="text-info">👩‍🎓 Matching Student Names</h4>
+        <div class="list-group">
+            {% for s in students %}
+            <div class="list-group-item">
+                <strong>{{ s.username }}</strong><br>
+                <small class="text-muted">{{ s.email }}</small>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if not notes and not students %}
+    <p class="text-muted">No matches found for your search.</p>
+    {% endif %}
+
+    <a href="{{ url_for('viewall') }}" class="btn btn-secondary mt-3">⬅ Back to Notes</a>
+</div>
+{% endblock %}

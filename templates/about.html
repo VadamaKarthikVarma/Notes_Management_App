@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Notes Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
+</head>
+
+<body>
+
+    <div class="back-btn-container" style="margin: 0px;padding: 10px;">
+        <a href="{{ url_for('viewall') }}">
+            <button class="btn btn-primary">
+                ⬅ Back
+            </button>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="about-header">
+            <h1>🎯 Notes Management System</h1>
+            <p class="mb-0">Developed using Flask Framework with MySQL Database</p>
+        </div>
+
+        <div class="about-section">
+            <h2 class="section-title">🧾 Project Overview</h2>
+            <p><strong>Project Handled by:</strong> Karthik Varma</p>
+        </div>
+
+        <div class="about-section">
+            <h3 class="section-title">🧠 Brief Description</h3>
+            <p>The Notes Management System is a full-stack web application designed to help users securely manage their
+                personal notes online. Built using Flask (Python) for the backend and MySQL for database management,
+                this system enables users to create, read, update, and delete (CRUD) their notes efficiently.</p>
+            <p>Each registered user has a private workspace, ensuring complete data privacy. The application supports
+                user registration, login, and logout functionalities with password encryption for enhanced security. A
+                built-in search feature allows users to quickly find notes based on titles or content, making it a
+                practical and efficient digital note-keeping platform.</p>
+        </div>
+
+        <div class="about-section">
+            <h3 class="section-title">💡 Objectives</h3>
+            <ul class="outcome-list" style="list-style: none; padding-left: 0;">
+                <li>To provide a simple and user-friendly platform for online note management</li>
+                <li>To ensure secure authentication using Flask sessions</li>
+                <li>To demonstrate complete CRUD operations on personal notes</li>
+                <li>To enforce user-specific access control — each user can manage only their own notes</li>
+                <li>To integrate Flask with MySQL for dynamic data storage and retrieval</li>
+            </ul>
+        </div>
+
+        <div class="about-section">
+            <h3 class="section-title">⚙️ Technologies Used</h3>
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>Layer</th>
+                        <th>Technology</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Frontend</strong></td>
+                        <td>HTML, CSS, Bootstrap </td>
+                        <td>Responsive and modern interface</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Backend</strong></td>
+                        <td>Flask (Python)</td>
+                        <td>Application logic and routing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Database</strong></td>
+                        <td>MySQL</td>
+                        <td>Data storage for users and notes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Security</strong></td>
+                        <td>Werkzeug (Hashing)</td>
+                        <td>Password encryption</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Server</strong></td>
+                        <td>Flask's Development Server</td>
+                        <td>Local testing and deployment</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="about-section">
+            <h3 class="section-title">🧩 Modules Overview</h3>
+
+            <h4 class="module-header">🔹 1. User Module</h4>
+            <div>
+                <span class="feature-badge">Register</span>
+                <span class="feature-badge">Login</span>
+                <span class="feature-badge">Logout</span>
+                <span class="feature-badge">Session Management</span>
+            </div>
+
+            <h4 class="module-header">🔹 2. Notes Module (CRUD)</h4>
+            <table class="tech-table" style="margin-top: 1rem;">
+                <thead>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Route</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Create</strong></td>
+                        <td>/addnote</td>
+                        <td>Add new note (Title + Content)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Read All</strong></td>
+                        <td>/viewall</td>
+                        <td>View all notes for the logged-in user</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Read One</strong></td>
+                        <td>/viewnotes/
+                        <td>
+                        </td>
+                        <td>View detailed content of a note</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Update</strong></td>
+                        <td>/updatenote/
+                        <td>
+                        </td>
+                        <td>Edit note title or content</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Delete</strong></td>
+                        <td>/deletenote/
+                        <td>
+                        </td>
+                        <td>Permanently remove a note</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-muted" style="margin-top: 1rem;"><em>Each note is linked to a user_id, ensuring complete
+                    isolation between users' data.</em></p>
+        </div>
+
+        <div class="about-section">
+            <h3 class="section-title">🔐 Security Highlights</h3>
+            <div class="security-item">
+                <strong>🔒 Password Hashing:</strong> Passwords are hashed using generate_password_hash() before saving
+            </div>
+            <div class="security-item">
+                <strong>👤 User Access Control:</strong> Users can access only their own notes
+            </div>
+            <div class="security-item">
+                <strong>🛡️ Session Protection:</strong> Flask sessions protect routes from unauthorized access
+            </div>
+            <div class="security-item">
+                <strong>🗑️ Cascade Delete:</strong> ON DELETE CASCADE ensures a user's notes are automatically deleted
+                if the user is removed
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h3 class="section-title">🧮 Workflow Summary</h3>
+            <div class="workflow-step">
+                <div class="step-number">1</div>
+                <div><strong>Registration:</strong> User signs up → data stored in database (password encrypted)</div>
+            </div>
+            <div class="workflow-step">
+                <div class="step-number">2</div>
+                <div><strong>Login:</strong> User credentials verified → session created</div>
+            </div>
+            <div class="workflow-step">
+                <div class="step-number">3</div>
+                <div><strong>Notes Management:</strong> Logged-in users perform CRUD operations on their personal notes
+                </div>
+            </div>
+            <div class="workflow-step">
+                <div class="step-number">4</div>
+                <div><strong>Logout:</strong> Session cleared → user securely redirected to login page</div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h3 class="section-title">📈 Learning Outcomes</h3>
+            <ul class="outcome-list" style="list-style: none; padding-left: 0;">
+                <li>Building a full-stack app using Flask + MySQL</li>
+                <li>Implementing secure authentication and session handling</li>
+                <li>Performing CRUD operations and managing database relations</li>
+                <li>Using Jinja2 templating for dynamic web content</li>
+                <li>Enhancing UI/UX with Bootstrap 5 and responsive design</li>
+            </ul>
+        </div>
+
+        <div class="about-section">
+            <h3 class="section-title">🏁 Conclusion</h3>
+            <p>The Notes Management System showcases the integration of Flask with MySQL to create a secure, functional,
+                and user-centric application. It highlights key web development concepts — authentication, database
+                connectivity, and CRUD operations — making it an ideal project for learners exploring Full Stack Python
+                development.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</body>
+
+</html>

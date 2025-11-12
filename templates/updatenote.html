@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Update Note{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+      <div class="card shadow-sm">
+        <div class="card-body p-4">
+          <h4 class="mb-3 text-center">✏️ Edit Note</h4>
+          <form method="POST">
+            <!-- Title -->
+            <div class="mb-3">
+              <label class="form-label">Title</label>
+              <input type="text" name="title" class="form-control" value="{{ note.title }}" required>
+            </div>
+
+            <!-- Content -->
+            <div class="mb-3">
+              <label class="form-label">Content</label>
+              <textarea name="content" rows="6" class="form-control" required>{{ note.content }}</textarea>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-between">
+              <a class="btn btn-secondary" href="{{ url_for('viewall') }}">Cancel</a>
+              <button class="btn btn-warning" type="submit">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
