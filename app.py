@@ -325,7 +325,7 @@ def contact():
         # ✅ Create email message
         msg = Message(
             subject=f"New Contact Message from {name}",
-            recipients=['chikineshailesh@gmail.com'],  # <-- your email
+            recipients=['vedha0316.10@gmail.com'],  # <-- your email
             body=f"""
 You have received a new message via your Notes Management System contact form.
 
